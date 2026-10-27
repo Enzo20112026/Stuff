@@ -24,8 +24,14 @@ public static void main(String args[]) throws InterruptedException, IOException 
         
         try {
             Robot robot = new Robot();
+<<<<<<< HEAD
             ScreenShot.press1(robot,370,910);
             robot.setAutoDelay(30);
+=======
+            robot.setAutoDelay(30);
+            ScreenShot.press1(robot,220,910);
+            
+>>>>>>> fb9435fd76ca08b6ffd09085e9cc0b0a8d450d1f
             ScreenShot.press1(robot,980,220);
             robot.delay(1000);
             ScreenShot.press1(robot,1380,60);
