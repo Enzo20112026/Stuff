@@ -13,7 +13,7 @@ public class ScreenShot{
         robot.mouseMove(x,y);
             robot.mousePress(1024);
             robot.mouseRelease(1024);
-            robot.delay(30);
+           
     }
 public static void main(String args[]) throws InterruptedException, IOException { 
         BufferedImage img;
@@ -24,6 +24,7 @@ public static void main(String args[]) throws InterruptedException, IOException 
         
         try {
             Robot robot = new Robot();
+            robot.setAutoDelay(30);
             ScreenShot.press1(robot,220,910);
             
             ScreenShot.press1(robot,980,220);
@@ -36,7 +37,7 @@ public static void main(String args[]) throws InterruptedException, IOException 
             robot.mousePress(1024);
             robot.mouseMove(740,365);
             robot.mouseRelease(1024);
-            robot.delay(30);
+            
             img = robot.createScreenCapture(new Rectangle(60,130,630,131)); 
         } catch(Exception e) {img = new BufferedImage(1,1,1);}
         
