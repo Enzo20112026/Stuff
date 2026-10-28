@@ -18,16 +18,16 @@ public class ScreenShot{
 public static void main(String args[]) throws InterruptedException, IOException { 
         BufferedImage img;
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
-        System.out.println(size.getHeight());
-        System.out.println(InputEvent.BUTTON1_DOWN_MASK);
+        
         Thread.sleep(1);
         
         try {
             Robot robot = new Robot();
-            ScreenShot.press1(robot,370,910);
             robot.setAutoDelay(30);
+            ScreenShot.press1(robot,370,910);
+            
             ScreenShot.press1(robot,980,220);
-            robot.delay(1000);
+            robot.delay(900);
             ScreenShot.press1(robot,1380,60);
             ScreenShot.press1(robot,1420,130);
             ScreenShot.press1(robot,1420,130);
@@ -38,6 +38,8 @@ public static void main(String args[]) throws InterruptedException, IOException 
             robot.mouseRelease(1024);
             
             img = robot.createScreenCapture(new Rectangle(60,130,630,131)); 
+            img = robot.createScreenCapture(new Rectangle(775,140,635,60));
+            for (int i = 1; i < 28; i++){}
         } catch(Exception e) {img = new BufferedImage(1,1,1);}
         
          File outputfile = new File("screenshot.png");
@@ -45,6 +47,11 @@ public static void main(String args[]) throws InterruptedException, IOException 
          Path path = (outputfile.toPath());
         try{Files.createFile(path); } catch(FileAlreadyExistsException e){}
         System.out.println(size.getWidth());
+        System.out.println(size.getHeight());
+        System.out.println(InputEvent.BUTTON1_DOWN_MASK);
     }
-    
+    public static void leftside()
+    {
+        
+    }
 }
