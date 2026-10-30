@@ -20,9 +20,8 @@ public class ScreenShot{
 public static void main(String args[]) throws InterruptedException, IOException { 
         BufferedImage img;
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
-        BufferedImage mainImg = new BufferedImage(800,1500,1);
-        Thread.sleep(1);
-        Graphics g2 = mainImg.createGraphics();
+        Graphics g2;
+        BufferedImage mainImg;
          int imgHeight = 0;
         try {
             Robot robot = new Robot();
@@ -40,6 +39,9 @@ public static void main(String args[]) throws InterruptedException, IOException 
             robot.mouseMove(740,365);
             robot.mouseRelease(1024);
             
+            mainImg = new BufferedImage(700,8000,1);
+        
+            g2 = mainImg.createGraphics();
             img = robot.createScreenCapture(new Rectangle(60,130,630,131)); 
             imgHeight += img.getHeight();
             g2.drawImage(img,0,0,null);
@@ -53,24 +55,29 @@ public static void main(String args[]) throws InterruptedException, IOException 
             robot.mouseMove(0,0);
             robot.delay(3000);
             
-            img = robot.createScreenCapture(new Rectangle(50,140,635,60));
-            g2.drawImage(img,0,imgHeight,null);
-            imgHeight += img.getHeight();
-            img = robot.createScreenCapture(new Rectangle(50,550,635,60));
-            g2.drawImage(img,0,imgHeight,null);
-            imgHeight += img.getHeight();
-            img = robot.createScreenCapture(new Rectangle(775,140,635,60));
-            g2.drawImage(img,0,imgHeight,null);
-            imgHeight += img.getHeight();
-            img = robot.createScreenCapture(new Rectangle(775,550,635,60));
-            g2.drawImage(img,0,imgHeight,null);
-            imgHeight += img.getHeight();
-            ScreenShot.press1(robot,1430,540);
-            robot.mouseMove(0,0);
-            robot.delay(3000);
-            for (int i = 1; i < 28; i++){}
-        } catch(Exception e) {img = new BufferedImage(1,1,1);}
-        
+            
+            for (int i = 1; i < 2; i++)
+            {
+                img = robot.createScreenCapture(new Rectangle(50,140,635,60));
+                g2.drawImage(img,0,imgHeight,null);
+                imgHeight += img.getHeight();
+                img = robot.createScreenCapture(new Rectangle(50,550,635,60));
+                g2.drawImage(img,0,imgHeight,null);
+                imgHeight += img.getHeight();
+                img = robot.createScreenCapture(new Rectangle(775,140,635,60));
+                g2.drawImage(img,0,imgHeight,null);
+                imgHeight += img.getHeight();
+                img = robot.createScreenCapture(new Rectangle(775,550,635,60));
+                g2.drawImage(img,0,imgHeight,null);
+                imgHeight += img.getHeight();
+                ScreenShot.press1(robot,1430,540);
+                robot.mouseMove(0,0);
+                robot.delay(3000);
+            }
+        } catch(Exception e) {img = new BufferedImage(0,0,1); mainImg = new BufferedImage(0,0,1); }
+        //mainImg = new BufferedImage(6000,3000,1);
+        //g2 = mainImg.createGraphics();
+        //g2.drawImage(img,0,imgHeight,null);
          File outputfile = new File("screenshot.png");
          ImageIO.write(mainImg, "png", outputfile);
          Path path = (outputfile.toPath());
